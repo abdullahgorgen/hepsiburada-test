@@ -9,6 +9,11 @@ reports/
 ### IntelliJ IDEA ###
 .idea/
 *.iml
+out/
 
-### Test case dokümanı ###
+### OS ###
+.DS_Store
+Thumbs.db
+
+### Test case document ###
 *.xlsx
