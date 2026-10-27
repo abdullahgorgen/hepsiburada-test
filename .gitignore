@@ -1,21 +1,19 @@
+### Maven ###
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-.kotlin
+
+### Gauge ###
+.gauge/
+gauge_bin/
+logs/
+reports/
+*.log
 
 ### IntelliJ IDEA ###
+.idea/
 *.iws
 *.iml
 *.ipr
-
-### IntelliJ ###
-.idea/
-
-### Selenium / test çıktıları ###
-screenshots/
-test-output/
-*.log
 
 ### Test case dokümanı ###
 *.xlsx
