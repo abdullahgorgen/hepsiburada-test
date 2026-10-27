@@ -1,0 +1,32 @@
+[
+  {
+    "key": "cookieBanner",
+    "type": "css",
+    "value": "efilli-layout-dynamic"
+  },
+  {
+    "key": "cookieAcceptButton",
+    "type": "css",
+    "value": "#hb-accept-all"
+  },
+  {
+    "key": "searchBox",
+    "type": "xpath",
+    "value": "//div[@role='search']"
+  },
+  {
+    "key": "searchInput",
+    "type": "xpath",
+    "value": "//input[@data-test-id='search-bar-input']"
+  },
+  {
+    "key": "cartItemCount",
+    "type": "id",
+    "value": "cartItemCount"
+  },
+  {
+    "key": "shoppingCartButton",
+    "type": "id",
+    "value": "shoppingCart"
+  }
+]

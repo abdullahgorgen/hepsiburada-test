@@ -1,0 +1,52 @@
+[
+  {
+    "key": "productCards",
+    "type": "xpath",
+    "value": "//div[starts-with(@id,'ProductList')]//li//article"
+  },
+  {
+    "key": "filterPanelReady",
+    "type": "xpath",
+    "value": "//div[starts-with(@id,'VerticalFilter')][@voltran-hydrated='true']"
+  },
+  {
+    "key": "sellerCheckbox",
+    "type": "xpath",
+    "value": "//div[@id='satici']//label[.//input[@value='%s']]"
+  },
+  {
+    "key": "appliedFilterNames",
+    "type": "xpath",
+    "value": "//div[@data-test-id='filterbox-item-display-name']"
+  },
+  {
+    "key": "sortDropdown",
+    "type": "xpath",
+    "value": "//div[starts-with(@id,'SortingBox')]//div[@data-test-id='dropdown-toggle']"
+  },
+  {
+    "key": "sortOption",
+    "type": "xpath",
+    "value": "//div[starts-with(@id,'SortingBox')]//a[normalize-space()='%s']"
+  },
+  {
+    "key": "firstProductTitle",
+    "type": "xpath",
+    "value": "//li[@id='i0']//h2[starts-with(@data-test-id,'title')]"
+  },
+  {
+    "key": "firstProductPrice",
+    "type": "xpath",
+    "value": "//li[@id='i0']//div[starts-with(@data-test-id,'final-price')]"
+  },
+  {
+    "key": "firstProductAddToCartButton",
+    "type": "xpath",
+    "value": "//li[@id='i0']//div[starts-with(@data-test-id,'add-to-cart-button')]"
+  },
+  {
+    "key": "addToCartNotification",
+    "type": "css",
+    "value": ".hb-toast-text"
+  }
+]

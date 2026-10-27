@@ -1,0 +1,27 @@
+[
+  {
+    "key": "cartItems",
+    "type": "xpath",
+    "value": "//li[contains(@class,'basket_items_')]"
+  },
+  {
+    "key": "cartProductName",
+    "type": "xpath",
+    "value": "//li[contains(@class,'basket_items_')]//div[contains(@class,'product_name_')]/a"
+  },
+  {
+    "key": "cartProductPrice",
+    "type": "xpath",
+    "value": "//li[contains(@class,'basket_items_')]//div[contains(@class,'product_price_container_')]/div"
+  },
+  {
+    "key": "cartProductQuantity",
+    "type": "xpath",
+    "value": "//li[contains(@class,'basket_items_')]//input[@name='quantity']"
+  },
+  {
+    "key": "cartSellerName",
+    "type": "xpath",
+    "value": "//div[contains(@class,'merchant_name_')]//a"
+  }
+]

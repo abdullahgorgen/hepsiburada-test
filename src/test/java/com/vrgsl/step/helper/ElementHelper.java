@@ -27,15 +27,17 @@ public final class ElementHelper {
         }
     }
 
-    public static By getBy(String key) {
+    // Args fill the %s placeholders in the locator value, e.g. a seller name
+    public static By getBy(String key, Object... args) {
         ElementInfo element = ELEMENTS.get(key);
         if (element == null) {
             throw new IllegalArgumentException("Element not found: " + key);
         }
+        String value = args.length == 0 ? element.value() : String.format(element.value(), args);
         return switch (element.type()) {
-            case "id" -> By.id(element.value());
-            case "css" -> By.cssSelector(element.value());
-            case "xpath" -> By.xpath(element.value());
+            case "id" -> By.id(value);
+            case "css" -> By.cssSelector(value);
+            case "xpath" -> By.xpath(value);
             default -> throw new IllegalArgumentException("Unsupported locator type: " + element.type());
         };
     }
