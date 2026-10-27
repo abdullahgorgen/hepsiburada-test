@@ -30,6 +30,11 @@
     "value": "//div[starts-with(@id,'SortingBox')]//a[normalize-space()='%s']"
   },
   {
+    "key": "productListLoading",
+    "type": "xpath",
+    "value": "//div[starts-with(@id,'ProductList')]//div[contains(@class,'moria-LoadingWrapper')][not(*)]"
+  },
+  {
     "key": "firstProductTitle",
     "type": "xpath",
     "value": "//li[@id='i0']//h2[starts-with(@data-test-id,'title')]"
