@@ -1,5 +1,3 @@
-browser: chrome
-
 timeouts:
   explicitWait: 15
   pageLoadTimeout: 60
@@ -11,9 +9,5 @@ chrome:
     - "--disable-notifications"
     - "--disable-blink-features=AutomationControlled"
     - "--lang=tr-TR"
-  prefs:
-    profile.default_content_setting_values.notifications: 2
-    credentials_enable_service: false
-    profile.password_manager_enabled: false
   excludeSwitches:
     - "enable-automation"

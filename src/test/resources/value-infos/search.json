@@ -1,5 +1,5 @@
 {
-  "searchKeyword": "kitap",
-  "sellerName": "Hepsiburada",
-  "sortOption": "Çok Satanlar"
+  "searchKeywordBook": "kitap",
+  "sellerHepsiburada": "Hepsiburada",
+  "sortBestSellers": "Çok Satanlar"
 }

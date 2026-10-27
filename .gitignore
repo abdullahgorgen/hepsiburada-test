@@ -1,19 +1,14 @@
 ### Maven ###
 target/
-!.mvn/wrapper/maven-wrapper.jar
 
 ### Gauge ###
 .gauge/
-gauge_bin/
 logs/
 reports/
-*.log
 
 ### IntelliJ IDEA ###
 .idea/
-*.iws
 *.iml
-*.ipr
 
 ### Test case dokümanı ###
 *.xlsx
