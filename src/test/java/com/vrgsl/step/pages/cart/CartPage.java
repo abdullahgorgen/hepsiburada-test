@@ -16,8 +16,8 @@ public class CartPage extends BasePage {
         return getText("cartProductPrice");
     }
 
-    public String getProductQuantity() {
-        return read("cartProductQuantity", element -> element.getDomProperty("value"));
+    public int getProductQuantity() {
+        return read("cartProductQuantity", element -> Integer.parseInt(element.getDomProperty("value")));
     }
 
     public String getSellerName() {

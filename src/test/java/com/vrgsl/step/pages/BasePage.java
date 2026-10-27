@@ -63,8 +63,8 @@ public abstract class BasePage {
         });
     }
 
-    public String getCartItemCount() {
-        return getText("cartItemCount");
+    public int getCartItemCount() {
+        return Integer.parseInt(getText("cartItemCount"));
     }
 
     public CartPage goToCart() {

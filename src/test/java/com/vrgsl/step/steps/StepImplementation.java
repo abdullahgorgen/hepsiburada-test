@@ -30,7 +30,7 @@ public class StepImplementation {
     }
 
     @Step("Verify search results are displayed")
-    public void verifySearchResultsListed() {
+    public void verifySearchResultsDisplayed() {
         assertThat(searchResultsPage.getProductCount()).as("product count").isPositive();
     }
 
@@ -50,7 +50,7 @@ public class StepImplementation {
     }
 
     @Step("Verify sort <sortKey> is selected and seller filter <sellerKey> is kept")
-    public void verifySortKeepsFilter(String sortKey, String sellerKey) {
+    public void verifySortSelectedAndFilterKept(String sortKey, String sellerKey) {
         assertThat(searchResultsPage.getSelectedSort()).as("selected sort").isEqualTo(getValue(sortKey));
         assertThat(searchResultsPage.getAppliedFilters()).as("applied filters").contains(getValue(sellerKey));
     }
@@ -73,22 +73,22 @@ public class StepImplementation {
 
     @Step("Verify cart item count is <count>")
     public void verifyCartItemCount(int count) {
-        assertThat(searchResultsPage.getCartItemCount()).as("cart counter").isEqualTo(String.valueOf(count));
+        assertThat(searchResultsPage.getCartItemCount()).as("cart counter").isEqualTo(count);
     }
 
     @Step("Navigate to shopping cart page")
-    public void goToCart() {
+    public void navigateToCart() {
         cartPage = searchResultsPage.goToCart();
     }
 
     @Step("Verify cart contains <count> item")
-    public void verifyCartContainsItems(int count) {
+    public void verifyCartItems(int count) {
         assertThat(cartPage.getItemCount()).as("cart rows").isEqualTo(count);
-        assertThat(cartPage.getProductQuantity()).as("product quantity").isEqualTo(String.valueOf(count));
+        assertThat(cartPage.getProductQuantity()).as("product quantity").isEqualTo(count);
     }
 
     @Step("Verify cart product matches the noted product and seller is <sellerKey>")
-    public void verifyCartProductMatchesNoted(String sellerKey) {
+    public void verifyCartProduct(String sellerKey) {
         assertThat(cartPage.getProductName()).as("product name").isEqualTo(notedProductName);
         assertThat(parsePrice(cartPage.getProductPrice())).as("product price")
                 .isEqualByComparingTo(parsePrice(notedProductPrice));
