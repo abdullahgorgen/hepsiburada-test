@@ -1,0 +1,22 @@
+[
+  {
+    "key": "detailProductTitle",
+    "type": "css",
+    "value": "h1[data-test-id='title']"
+  },
+  {
+    "key": "detailProductPrice",
+    "type": "css",
+    "value": "div[data-test-id='price']"
+  },
+  {
+    "key": "detailAddToCartButton",
+    "type": "css",
+    "value": "button[data-test-id='addToCart']"
+  },
+  {
+    "key": "popupGoToCartButton",
+    "type": "xpath",
+    "value": "//button[normalize-space()='Sepete git']"
+  }
+]

@@ -2,7 +2,6 @@ package com.vrgsl.step.pages;
 
 import com.vrgsl.step.driver.DriverManager;
 import com.vrgsl.step.helper.ConfigHelper;
-import com.vrgsl.step.pages.cart.CartPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -13,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
 
 import static com.vrgsl.step.helper.ElementHelper.getBy;
@@ -63,12 +63,13 @@ public abstract class BasePage {
         });
     }
 
-    public int getCartItemCount() {
-        return Integer.parseInt(getText("cartItemCount"));
-    }
-
-    public CartPage goToCart() {
-        click("shoppingCartButton");
-        return new CartPage();
+    // Window handles have no order, so the new tab is the one that was not open before the click
+    protected void switchToNewTab(Set<String> tabsBefore) {
+        wait.until(d -> d.getWindowHandles().size() > tabsBefore.size());
+        String newTab = driver.getWindowHandles().stream()
+                .filter(handle -> !tabsBefore.contains(handle))
+                .findFirst()
+                .orElseThrow();
+        driver.switchTo().window(newTab);
     }
 }

@@ -11,13 +11,13 @@
   },
   {
     "key": "searchBox",
-    "type": "xpath",
-    "value": "//div[@role='search']"
+    "type": "css",
+    "value": "div[role='search']"
   },
   {
     "key": "searchInput",
-    "type": "xpath",
-    "value": "//input[@data-test-id='search-bar-input']"
+    "type": "css",
+    "value": "input[data-test-id='search-bar-input']"
   },
   {
     "key": "cartItemCount",
@@ -28,5 +28,10 @@
     "key": "shoppingCartButton",
     "type": "id",
     "value": "shoppingCart"
+  },
+  {
+    "key": "addToCartNotification",
+    "type": "css",
+    "value": ".hb-toast-text"
   }
 ]

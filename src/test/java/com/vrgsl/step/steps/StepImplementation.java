@@ -2,7 +2,9 @@ package com.vrgsl.step.steps;
 
 import com.thoughtworks.gauge.Step;
 import com.vrgsl.step.pages.cart.CartPage;
+import com.vrgsl.step.pages.common.Header;
 import com.vrgsl.step.pages.home.HomePage;
+import com.vrgsl.step.pages.product.ProductDetailPage;
 import com.vrgsl.step.pages.search.SearchResultsPage;
 
 import java.math.BigDecimal;
@@ -12,14 +14,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class StepImplementation {
 
-    private final HomePage homePage = new HomePage();
+    private Header header;
+    private HomePage homePage;
     private SearchResultsPage searchResultsPage;
+    private ProductDetailPage productDetailPage;
     private CartPage cartPage;
     private String notedProductName;
     private String notedProductPrice;
 
+    // Gauge reuses this instance across scenarios, so pages are created per scenario with its new driver
     @Step("Open Hepsiburada home page")
     public void openHomePage() {
+        header = new Header();
+        homePage = new HomePage();
         homePage.open();
         homePage.acceptCookies();
     }
@@ -68,17 +75,43 @@ public class StepImplementation {
 
     @Step("Verify notification <messageKey> is displayed")
     public void verifyNotification(String messageKey) {
-        assertThat(searchResultsPage.getNotificationText()).as("notification").isEqualTo(getValue(messageKey));
+        assertThat(header.getNotificationText()).as("notification").isEqualTo(getValue(messageKey));
+    }
+
+    @Step("Load at least <count> products by scrolling")
+    public void loadProducts(int count) {
+        searchResultsPage.loadProducts(count);
+    }
+
+    @Step("Open the product with the most reviews among the first <count>")
+    public void openMostReviewedProduct(int count) {
+        productDetailPage = searchResultsPage.openMostReviewedProduct(count);
+    }
+
+    @Step("Note the name and price on the product detail page")
+    public void noteDetailProduct() {
+        notedProductName = productDetailPage.getTitle();
+        notedProductPrice = productDetailPage.getPrice();
+    }
+
+    @Step("Add the product to cart from the product detail page")
+    public void addDetailProductToCart() {
+        productDetailPage.addToCart();
+    }
+
+    @Step("Navigate to shopping cart from the confirmation popup")
+    public void navigateToCartFromPopup() {
+        cartPage = productDetailPage.goToCartFromPopup();
     }
 
     @Step("Verify cart item count is <count>")
     public void verifyCartItemCount(int count) {
-        assertThat(searchResultsPage.getCartItemCount()).as("cart counter").isEqualTo(count);
+        assertThat(header.getCartItemCount()).as("cart counter").isEqualTo(count);
     }
 
     @Step("Navigate to shopping cart page")
     public void navigateToCart() {
-        cartPage = searchResultsPage.goToCart();
+        cartPage = header.goToCart();
     }
 
     @Step("Verify cart contains <count> item")
@@ -87,15 +120,19 @@ public class StepImplementation {
         assertThat(cartPage.getProductQuantity()).as("product quantity").isEqualTo(count);
     }
 
-    @Step("Verify cart product matches the noted product and seller is <sellerKey>")
-    public void verifyCartProduct(String sellerKey) {
+    @Step("Verify cart product matches the noted product")
+    public void verifyCartProduct() {
         assertThat(cartPage.getProductName()).as("product name").isEqualTo(notedProductName);
         assertThat(parsePrice(cartPage.getProductPrice())).as("product price")
                 .isEqualByComparingTo(parsePrice(notedProductPrice));
+    }
+
+    @Step("Verify cart seller is <sellerKey>")
+    public void verifyCartSeller(String sellerKey) {
         assertThat(cartPage.getSellerName()).as("seller").isEqualTo(getValue(sellerKey));
     }
 
-    // The list shows "1.299 TL" while the cart shows "1.299,00 TL"
+
     private static BigDecimal parsePrice(String price) {
         return new BigDecimal(price.replaceAll("[^0-9,]", "").replace(',', '.'));
     }
